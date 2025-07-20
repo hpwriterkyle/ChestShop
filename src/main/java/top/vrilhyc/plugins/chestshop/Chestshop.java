@@ -16,8 +16,11 @@ import top.vrilhyc.plugins.chestshop.commands.MemoryCommand;
 
 public class Chestshop implements ModInitializer {
     public static final String MOD_ID = "chestshop";
+    public static final Config config = new Config();
+
     @Override
     public void onInitialize() {
+        loadData();
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> {
             MemoryCommand.register(commandDispatcher);
         });
@@ -36,5 +39,9 @@ public class Chestshop implements ModInitializer {
             }
             return true;
         });
+    }
+
+    public static void loadData(){
+        config.load();
     }
 }
